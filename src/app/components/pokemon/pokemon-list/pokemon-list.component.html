@@ -1,0 +1,20 @@
+<table *ngIf="isLoaded">
+    <thead>
+        <tr>
+            <td>Número</td>
+            <td>Nombre</td>
+            <td>Descripción</td>
+            <td>Tipos</td>
+            <td>Movimientos</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pokemon of listPokemon">
+            <td>{{ pokemon.PokedexNumber }}</td>
+            <td>{{ pokemon.Name }}</td>
+            <td>{{ pokemon.Description }}</td>
+            <td *ngIf="pokemon.Types">{{ pokemon.Types.TypeOne.SpanishName }} {{ pokemon.Types.TypeTwo.SpanishName }}</td>
+            <td>{{ pokemon.Movements }}</td>
+        </tr>
+    </tbody>
+</table>

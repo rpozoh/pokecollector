@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "pokecollector-a83a4"
+  },
+  "targets": {
+    "pokecollector-a83a4": {
+      "hosting": {
+        "pokecollector": [
+          "pokecollector-a83a4"
+        ]
+      }
+    }
+  }
+}
