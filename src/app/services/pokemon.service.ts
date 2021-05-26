@@ -35,17 +35,6 @@ export class PokemonService {
       return changes.map(pokemon => {
         const pokemonData = pokemon.payload.doc.data() as Pokemon;
         pokemonData.id = pokemon.payload.doc.id;
-        this._pokemonTypeService.getPokemonTypes(pokemonData.id).valueChanges().subscribe(data => {
-          pokemonData.Types = data[0];
-          this._typeService.getTypes(data[0].TypeOne).subscribe(typeOne => {
-            pokemonData.Types.TypeOne = typeOne!;
-          });
-          if(pokemonData.Types.TypeTwo) {
-            this._typeService.getTypes(data[0].TypeTwo).subscribe(typeTwo => {
-              pokemonData.Types.TypeTwo = typeTwo!;
-            });
-          }
-        });
         return pokemonData;
       });
     })));
