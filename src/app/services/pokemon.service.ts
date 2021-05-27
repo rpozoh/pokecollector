@@ -5,8 +5,6 @@ import { Observable } from 'rxjs';
 import { Pokemon } from '../interfaces/pokemon.interface';
 import { PokemonTypeService } from './pokemon-type.service';
 import { TypeService } from './type.service';
-import { PokemonType } from '../interfaces/pokemon-type.interface';
-import { Type } from '../interfaces/type.interface';
 
 @Injectable({
   providedIn: 'root'

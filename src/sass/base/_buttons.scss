@@ -1,0 +1,38 @@
+/*------------------------------*\
+            $BUTTONS
+\*------------------------------*/
+%btn {
+    display: inline-block;
+    color: $button-text-color;
+    background-color: $button-background-color;
+    line-height: 2.5;
+    border-radius: $border-radius;
+    font-size: $button-font-size;
+    &__icon {
+        font-size: 0.6em;
+    }
+}
+
+.btn {
+    @extend %btn;
+}
+
+.btn--info {
+    @extend %btn;
+    background-color: $color-info;
+}
+
+.btn--error {
+    @extend %btn;
+    background-color: $color-error;
+}
+
+.btn--warning {
+    @extend %btn;
+    background-color: $color-alert;
+}
+
+.btn-success {
+    @extend %btn;
+    background-color: $color-success;
+}

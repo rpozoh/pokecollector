@@ -1,0 +1,43 @@
+/*------------------------------*\
+            $COLORS
+\*------------------------------*/
+
+/*
+* Branding Colors
+*/
+$color-brand: #FF0000;
+$color-secondary: #000000;
+
+$color-black: #000000;
+$color-grey: #737373;
+$color-dark-grey: darken($color-grey, 25%);
+$color-light-grey: lighten($color-grey, 25%);
+$color-white: #ffffff;
+
+/*
+* Alert Colors
+*/
+$color-alert: #FB9D1F;
+$color-error: #F30303;
+$color-info: #19E4E6;
+$color-success: #0DFC0B;
+
+/*
+* Fonts
+*/
+$base-font: 'Arial', sans-serif;
+$base-font-size: 16px;
+
+/*
+* Buttons
+*/
+$button-text-color: $color-white;
+$button-background-color: $color-brand;
+$button-font-size: $base-font-size * 1.5;
+
+/*
+* Constants
+*/
+$border-radius: 4px;
+$padding: 24px;
+$page-max-width: 800px;

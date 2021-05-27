@@ -1,11 +1,12 @@
 <table *ngIf="pokemonLoaded && typeOneLoaded && typeTwoLoaded">
     <thead>
         <tr>
-            <td>Número</td>
+            <td>N° Pokedex</td>
             <td>Nombre</td>
             <td>Descripción</td>
             <td>Tipos</td>
             <td>Movimientos</td>
+            <td>Detalle</td>
         </tr>
     </thead>
     <tbody>
@@ -15,7 +16,7 @@
             <td>{{ pokemon.Description }}</td>
             <td *ngIf="pokemon.Types">{{ pokemon.Types.TypeOne.SpanishName }} {{ pokemon.Types.TypeTwo.SpanishName }}</td>
             <td>{{ pokemon.Movements }}</td>
+            <button class="btn">Ver</button>
         </tr>
     </tbody>
 </table>
-<p>Prueba</p>
