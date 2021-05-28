@@ -38,4 +38,8 @@ export class PokemonService {
     })));
     return this.pokemon;
   }
+
+  getPokemon(pokemon : string) {
+    return this.firestore.collection<Pokemon>('Pokemon').doc(pokemon);
+  }
 } 

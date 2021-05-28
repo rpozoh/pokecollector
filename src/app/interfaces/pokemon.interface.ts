@@ -1,3 +1,4 @@
+import { PokemonEvolution } from "./pokemon-evolution.interface";
 import { PokemonType } from "./pokemon-type.interface";
 
 export interface Pokemon {
@@ -6,5 +7,7 @@ export interface Pokemon {
     Description : string;
     PokedexNumber : number;
     Movements : string;
-    Types : PokemonType;
+    Image : string;
+    PokemonTypes : PokemonType;
+    PokemonEvolution : PokemonEvolution;
 }

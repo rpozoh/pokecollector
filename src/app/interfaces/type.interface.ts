@@ -1,4 +1,4 @@
 export interface Type {
-    EnglishName : String;
-    SpanishName : String;
+    EnglishName : string;
+    SpanishName : string;
 }

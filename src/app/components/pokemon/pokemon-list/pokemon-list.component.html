@@ -1,21 +1,23 @@
-<table *ngIf="pokemonLoaded && typeOneLoaded && typeTwoLoaded">
+<table *ngIf="pokemonLoaded && typeOneLoaded && typeTwoLoaded && pokemonEvolutionLoaded">
     <thead>
         <tr>
             <td>N° Pokedex</td>
             <td>Nombre</td>
             <td>Descripción</td>
             <td>Tipos</td>
-            <td>Movimientos</td>
+            <td>Evoluciones</td>
             <td>Detalle</td>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let pokemon of listPokemon">
             <td>{{ pokemon.PokedexNumber }}</td>
-            <td>{{ pokemon.Name }}</td>
+            <td>{{ pokemon.Name }}
+            <img src="{{ pokemon.Image }}" width="100" height="100"></td>
             <td>{{ pokemon.Description }}</td>
-            <td *ngIf="pokemon.Types">{{ pokemon.Types.TypeOne.SpanishName }} {{ pokemon.Types.TypeTwo.SpanishName }}</td>
-            <td>{{ pokemon.Movements }}</td>
+            <td *ngIf="pokemon.PokemonTypes">{{ pokemon.PokemonTypes.TypeOne.SpanishName }} {{ pokemon.PokemonTypes.TypeTwo.SpanishName }}</td>
+            <td *ngIf="pokemon.PokemonEvolution">{{ pokemon.PokemonEvolution.Requeriment }} {{ pokemon.PokemonEvolution.Evolution.Name }}</td>
+            <td *ngIf="!pokemon.PokemonEvolution">No tiene</td>
             <button class="btn">Ver</button>
         </tr>
     </tbody>
