@@ -38,8 +38,4 @@ export class PokemonService {
   getPokemonByID(pokemon : string) {
     return this.firestore.collection<Pokemon>('Pokemon').doc(pokemon);
   }
-
-  getPokemonByName(pokemonName : string) {
-    return this.firestore.collection<Pokemon>('Pokemon', ref => ref.where('Name', "==", pokemonName));
-  }
 } 

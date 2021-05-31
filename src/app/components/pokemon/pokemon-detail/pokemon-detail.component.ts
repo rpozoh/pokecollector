@@ -11,10 +11,11 @@ import { Pokemon } from '../../../interfaces/pokemon.interface';
   templateUrl: './pokemon-detail.component.html',
 })
 export class PokemonDetailComponent implements OnInit {
+  
+  @Input() pokemonID : string = '';
 
   pokemon : Pokemon[] = [];
   pokemonName : string = '';
-  pokemonId : string = '';
   routerLinkAddress : string = '/pokemon';
   pokemonLoaded : boolean;
   typesLoaded : boolean;
@@ -34,8 +35,7 @@ export class PokemonDetailComponent implements OnInit {
                }
 
   ngOnInit(): void {
-    this.pokemonId = this.activatedRoute.snapshot.queryParams.pokemonDocId;
-    this._pokemonService.getPokemonByID(this.pokemonId).valueChanges().subscribe(getPokemonData => {
+    this._pokemonService.getPokemonByID(this.pokemonID).valueChanges().subscribe(getPokemonData => {
       this.pokemon[0] = getPokemonData!;
       this.pokemonLoaded = true;
     });
@@ -46,10 +46,10 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   getPokemonTypes() {
-    this._pokemonTypeService.getPokemonTypes(this.pokemonId).valueChanges().subscribe(getPokemonTypeData => {
+    this._pokemonTypeService.getPokemonTypes(this.pokemonID).valueChanges().subscribe(getPokemonTypeData => {
       this.pokemon[0].PokemonTypes = getPokemonTypeData[0];
       this._typeService.getTypes(getPokemonTypeData[0].TypeOne.toString()).valueChanges().subscribe(getTypeOneData => {
-        this.pokemon[0].PokemonTypes!.TypeOne = getTypeOneData!;
+        this.pokemon[0].PokemonTypes.TypeOne = getTypeOneData!;
       });
       if(this.pokemon[0].PokemonTypes.TypeTwo) {
         this._typeService.getTypes(getPokemonTypeData[0].TypeTwo.toString()).valueChanges().subscribe(getTypeTwoData => {
@@ -61,7 +61,7 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   getPokemonEvolution() {
-    this._pokemonEvolutionService.getPokemonEvolution(this.pokemonId).valueChanges().subscribe(getPokemonEvolutionData => {
+    this._pokemonEvolutionService.getPokemonEvolution(this.pokemonID).valueChanges().subscribe(getPokemonEvolutionData => {
       this.pokemon[0].PokemonEvolution = getPokemonEvolutionData[0];
       if(this.pokemon[0].PokemonEvolution) {
         this._pokemonService.getPokemonByID(this.pokemon[0].PokemonEvolution.Evolution.toString()).get().subscribe(getPokemonData => {

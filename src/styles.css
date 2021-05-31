@@ -45,6 +45,283 @@
           animation-name: fadeIn;
 }
 
+.wrap {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #eee;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.ball {
+  -webkit-animation: ball-bounce 1s infinite;
+          animation: ball-bounce 1s infinite;
+  height: 200px;
+  position: relative;
+  width: 200px;
+  z-index: 2;
+}
+
+.ball__top {
+  background: #ee1515;
+  border-top: 7px solid black;
+  content: "";
+  display: block;
+  height: 50%;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.ball__top:before {
+  content: "";
+  -webkit-animation: ball-before-anim 1s infinite;
+          animation: ball-before-anim 1s infinite;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.25) 29%, rgba(255, 255, 255, 0) 70%);
+  display: block;
+  height: 30px;
+  position: absolute;
+  width: 30px;
+  z-index: 4;
+}
+
+.ball__button {
+  background-color: white;
+  border-radius: 50%;
+  border: 5px solid black;
+  display: block;
+  height: 30px;
+  left: calc(50% - 15px);
+  position: absolute;
+  top: calc(50% - 10px);
+  width: 30px;
+  z-index: 3;
+}
+
+.ball__bottom {
+  background: #ffffff;
+  border-top: 7px solid black;
+  bottom: 0;
+  display: block;
+  height: calc(50% - 7px);
+  left: 0;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.ball__bottom:after {
+  content: "";
+  -webkit-animation: ball-after-anim 1s infinite;
+          animation: ball-after-anim 1s infinite;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#999999));
+  background: linear-gradient(to bottom, transparent 0%, #999999 100%);
+  bottom: 0;
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  z-index: 4;
+}
+
+.ballShadow {
+  -webkit-animation: ball-shadow 1s infinite;
+          animation: ball-shadow 1s infinite;
+  background-color: rgba(0, 0, 0, 0.25);
+  display: block;
+  height: 20px;
+  position: relative;
+  width: 120px;
+  z-index: 1;
+}
+
+@-webkit-keyframes ball-bounce {
+  0% {
+    bottom: 30px;
+    -webkit-clip-path: ellipse(22% 32% at 50% 50%);
+            clip-path: ellipse(22% 32% at 50% 50%);
+  }
+  50% {
+    bottom: -50px;
+  }
+  70% {
+    bottom: -50px;
+    -webkit-clip-path: ellipse(31% 18% at 50% 50%);
+            clip-path: ellipse(31% 18% at 50% 50%);
+  }
+  100% {
+    bottom: 30px;
+    -webkit-clip-path: ellipse(22% 32% at 50% 50%);
+            clip-path: ellipse(22% 32% at 50% 50%);
+  }
+}
+
+@keyframes ball-bounce {
+  0% {
+    bottom: 30px;
+    -webkit-clip-path: ellipse(22% 32% at 50% 50%);
+            clip-path: ellipse(22% 32% at 50% 50%);
+  }
+  50% {
+    bottom: -50px;
+  }
+  70% {
+    bottom: -50px;
+    -webkit-clip-path: ellipse(31% 18% at 50% 50%);
+            clip-path: ellipse(31% 18% at 50% 50%);
+  }
+  100% {
+    bottom: 30px;
+    -webkit-clip-path: ellipse(22% 32% at 50% 50%);
+            clip-path: ellipse(22% 32% at 50% 50%);
+  }
+}
+@-webkit-keyframes ball-shadow {
+  0% {
+    bottom: 30px;
+    -webkit-clip-path: ellipse(22% 34% at 50% 50%);
+            clip-path: ellipse(22% 34% at 50% 50%);
+  }
+  70% {
+    bottom: 25px;
+    -webkit-clip-path: ellipse(31% 18% at 50% 50%);
+            clip-path: ellipse(31% 18% at 50% 50%);
+  }
+  100% {
+    bottom: 30px;
+    -webkit-clip-path: ellipse(22% 34% at 50% 50%);
+            clip-path: ellipse(22% 34% at 50% 50%);
+  }
+}
+@keyframes ball-shadow {
+  0% {
+    bottom: 30px;
+    -webkit-clip-path: ellipse(22% 34% at 50% 50%);
+            clip-path: ellipse(22% 34% at 50% 50%);
+  }
+  70% {
+    bottom: 25px;
+    -webkit-clip-path: ellipse(31% 18% at 50% 50%);
+            clip-path: ellipse(31% 18% at 50% 50%);
+  }
+  100% {
+    bottom: 30px;
+    -webkit-clip-path: ellipse(22% 34% at 50% 50%);
+            clip-path: ellipse(22% 34% at 50% 50%);
+  }
+}
+@-webkit-keyframes ball-before-anim {
+  0% {
+    height: 30px;
+    left: 50%;
+    top: 45%;
+    width: 30px;
+  }
+  50% {
+    height: 45px;
+    left: 47%;
+    top: 52%;
+    width: 45px;
+  }
+  70% {
+    height: 45px;
+    left: 47%;
+    top: 52%;
+    width: 45px;
+  }
+  100% {
+    height: 30px;
+    left: 50%;
+    top: 45%;
+    width: 30px;
+  }
+}
+@keyframes ball-before-anim {
+  0% {
+    height: 30px;
+    left: 50%;
+    top: 45%;
+    width: 30px;
+  }
+  50% {
+    height: 45px;
+    left: 47%;
+    top: 52%;
+    width: 45px;
+  }
+  70% {
+    height: 45px;
+    left: 47%;
+    top: 52%;
+    width: 45px;
+  }
+  100% {
+    height: 30px;
+    left: 50%;
+    top: 45%;
+    width: 30px;
+  }
+}
+@-webkit-keyframes ball-after-anim {
+  0% {
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#555));
+    background: linear-gradient(to bottom, transparent 0%, #555 100%);
+    height: 60%;
+  }
+  50% {
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#777));
+    background: linear-gradient(to bottom, transparent 0%, #777 100%);
+    height: 100%;
+  }
+  70% {
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#777));
+    background: linear-gradient(to bottom, transparent 0%, #777 100%);
+    height: 100%;
+  }
+  100% {
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#555));
+    background: linear-gradient(to bottom, transparent 0%, #555 100%);
+    height: 60%;
+  }
+}
+@keyframes ball-after-anim {
+  0% {
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#555));
+    background: linear-gradient(to bottom, transparent 0%, #555 100%);
+    height: 60%;
+  }
+  50% {
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#777));
+    background: linear-gradient(to bottom, transparent 0%, #777 100%);
+    height: 100%;
+  }
+  70% {
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#777));
+    background: linear-gradient(to bottom, transparent 0%, #777 100%);
+    height: 100%;
+  }
+  100% {
+    background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#555));
+    background: linear-gradient(to bottom, transparent 0%, #555 100%);
+    height: 60%;
+  }
+}
 /*------------------------------*\
             $BUTTONS
 \*------------------------------*/

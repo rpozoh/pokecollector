@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../../services/pokemon.service';
 import { Pokemon } from '../../../interfaces/pokemon.interface';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -11,10 +10,12 @@ export class PokemonListComponent implements OnInit {
 
   public listPokemon : Pokemon[] = [];
   pokemonLoaded : boolean;
+  pokemonDetail : boolean;
+  pokemonId : string = '';
   
-  constructor(private _pokemonService : PokemonService,
-              private router : Router) { 
+  constructor(private _pokemonService : PokemonService) { 
     this.pokemonLoaded = false;
+    this.pokemonDetail = false;
   }
 
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class PokemonListComponent implements OnInit {
   }
 
   viewPokemonDetails(pokemonId : string) {
-    this.router.navigate( ['/pokemon-detail'], { queryParams: { pokemonDocId : pokemonId }, skipLocationChange: true } );
+    this.pokemonId = pokemonId;
+    this.pokemonDetail = !this.pokemonDetail;
   }
 }
