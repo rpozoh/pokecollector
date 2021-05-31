@@ -1,1 +1,24 @@
-<p>header works!</p>
+<nav class=" header navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">
+      <img src="https://static.wikia.nocookie.net/pokemon-advanced/images/9/9b/Slowpoke.png" width="30" height="30" alt="">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['home']">Inicio</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['pokemon']">Pokémon</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['categories']">Categorías</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['news']">Noticias</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" [routerLink]="['about']">Información</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

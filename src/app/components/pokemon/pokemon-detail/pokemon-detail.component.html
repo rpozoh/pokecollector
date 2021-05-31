@@ -1,1 +1,11 @@
-<p>detail works!</p>
+<div *ngIf="pokemonLoaded && typesLoaded && pokemonEvolutionLoaded">
+    <img src="{{ pokemon[0].Image }}" alt="{{ pokemon[0].Name }}"> 
+    <p>{{ pokemon[0].PokedexNumber }}</p>
+    <p>{{ pokemon[0].Name }}</p>
+    <p>{{ pokemon[0].Description }}</p>
+    <p>{{ pokemon[0].PokemonTypes.TypeOne.SpanishName }} {{ pokemon[0].PokemonTypes.TypeTwo.SpanishName }} </p>
+    <div *ngIf="pokemon[0].PokemonEvolution"><p>{{ pokemon[0].PokemonEvolution.Evolution.Name }}</p>
+    <p>{{ pokemon[0].PokemonEvolution.Requeriment }}</p></div>
+    <div *ngIf="!pokemon[0].PokemonEvolution"><p>No tiene</p></div>
+</div>
+<button class="btn btn-danger" type="button" [routerLink]="[routerLinkAddress]">Volver</button>

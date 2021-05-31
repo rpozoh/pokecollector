@@ -11,7 +11,9 @@ $color-secondary: #000000;
 $color-black: #000000;
 $color-grey: #737373;
 $color-dark-grey: darken($color-grey, 25%);
+$color-darken-grey: darken($color-grey, 50%);
 $color-light-grey: lighten($color-grey, 25%);
+$color-lighten-grey: lighten($color-grey, 50%);
 $color-white: #ffffff;
 
 /*

@@ -11,7 +11,6 @@ import { HomeComponent } from './components/home/home.component';
 
 // Firebase
 import { AngularFireModule } from  '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 // Environment
 import { environment } from '../environments/environment';
