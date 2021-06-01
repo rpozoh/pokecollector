@@ -1,8 +1,8 @@
 <app-loading *ngIf="!pokemonLoaded"></app-loading>
 <div class="row row-cols-1 row-cols-md-6 g-4" *ngIf="pokemonLoaded">
   <div class="col col-md-3 col-lg-2 my-3" *ngFor="let pokemon of listPokemon">
-    <div class="card">
-      <img src="{{ pokemon.Image }}" class="card-img-top" alt="{{ pokemon.Name }}">
+    <div class="card div">
+      <img src="{{ pokemon.Image }}" class="card-img-top img-cards" alt="{{ pokemon.Name }}">
       <div class="card-body">
         <h5 class="card-title">{{ pokemon.Name }}</h5>
         <p class="card-text">{{ pokemon.Description }}</p>

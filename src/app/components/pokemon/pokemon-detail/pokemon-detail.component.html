@@ -4,8 +4,14 @@
     <p>{{ pokemon[0].PokedexNumber }}</p>
     <p>{{ pokemon[0].Name }}</p>
     <p>{{ pokemon[0].Description }}</p>
-    <p>{{ pokemon[0].PokemonTypes.TypeOne.SpanishName }} {{ pokemon[0].PokemonTypes.TypeTwo.SpanishName }} </p>
-    <div *ngIf="pokemon[0].PokemonEvolution"><p>{{ pokemon[0].PokemonEvolution.Evolution.Name }}</p>
-    <p>{{ pokemon[0].PokemonEvolution.Requeriment }}</p></div>
+    <div>
+        <img src="{{ pokemon[0].PokemonTypes.TypeOne.Logo }}" alt="{{ pokemon[0].PokemonTypes.TypeOne.SpanishName }}">
+        <img src="{{ pokemon[0].PokemonTypes.TypeTwo.Logo }}" alt="{{ pokemon[0].PokemonTypes.TypeTwo.SpanishName }}">
+    </div>
+    <div *ngIf="pokemon[0].PokemonEvolution">
+        <img src="{{ pokemon[0].PokemonEvolution.Evolution.Image }}" alt="{{ pokemon[0].PokemonEvolution.Evolution.Name }}"> 
+        <p>{{ pokemon[0].PokemonEvolution.Evolution.Name }}</p>
+        <p>{{ pokemon[0].PokemonEvolution.Requeriment }}</p>
+    </div>
     <div *ngIf="!pokemon[0].PokemonEvolution"><p>No tiene</p></div>
 </div>
