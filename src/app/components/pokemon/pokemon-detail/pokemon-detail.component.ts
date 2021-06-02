@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { PokemonService } from '../../../services/pokemon.service';
 import { PokemonTypeService } from '../../../services/pokemon-type.service';
 import { PokemonEvolutionService } from '../../../services/pokemon-evolution.service';
@@ -15,23 +15,18 @@ export class PokemonDetailComponent implements OnInit {
   @Input() pokemonID : string = '';
 
   pokemon : Pokemon[] = [];
-  pokemonName : string = '';
-  routerLinkAddress : string = '/pokemon';
   pokemonLoaded : boolean;
   typesLoaded : boolean;
   pokemonEvolutionLoaded : boolean;
 
-  constructor(private activatedRoute : ActivatedRoute,
-              private _pokemonService : PokemonService,
+  constructor(private _pokemonService : PokemonService,
               private _pokemonTypeService : PokemonTypeService,
               private _typeService : TypeService,
-              private _pokemonEvolutionService : PokemonEvolutionService,) {
+              private _pokemonEvolutionService : PokemonEvolutionService,
+              private activeModal: NgbActiveModal) {
                 this.pokemonLoaded = false;
                 this.typesLoaded = false;
                 this.pokemonEvolutionLoaded = false;
-                this.activatedRoute.params.subscribe( pokemonName => {
-                  this.pokemonName = pokemonName['name'];
-                });
                }
 
   ngOnInit(): void {
@@ -70,5 +65,9 @@ export class PokemonDetailComponent implements OnInit {
       }
       this.pokemonEvolutionLoaded = true;
     });
+  }
+
+  closeModal() {
+    this.activeModal.close();
   }
 }

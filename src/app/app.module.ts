@@ -20,6 +20,8 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
 import { BodyComponent } from './components/shared/body/body.component';
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,12 +32,14 @@ import { BodyComponent } from './components/shared/body/body.component';
     HeaderComponent,
     FooterComponent,
     LoadingComponent,
-    BodyComponent
+    BodyComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot( APP_ROUTES,{ useHash : true } ),
     AngularFireModule.initializeApp(environment.firebase, 'angular-fs'),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

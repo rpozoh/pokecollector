@@ -1,17 +1,26 @@
 <app-loading *ngIf="!pokemonLoaded || !typesLoaded || !pokemonEvolutionLoaded"></app-loading>
-<div *ngIf="pokemonLoaded && typesLoaded && pokemonEvolutionLoaded">
+<div class="modal-header" *ngIf="pokemonLoaded && typesLoaded && pokemonEvolutionLoaded">
+    <h4 class="modal-title">{{ pokemon[0].Name }}</h4>
+    <button type="button" class="close" (click)="closeModal()" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
     <img src="{{ pokemon[0].Image }}" alt="{{ pokemon[0].Name }}"> 
-    <p>{{ pokemon[0].PokedexNumber }}</p>
-    <p>{{ pokemon[0].Name }}</p>
-    <p>{{ pokemon[0].Description }}</p>
-    <div>
-        <img src="{{ pokemon[0].PokemonTypes.TypeOne.Logo }}" alt="{{ pokemon[0].PokemonTypes.TypeOne.SpanishName }}">
-        <img src="{{ pokemon[0].PokemonTypes.TypeTwo.Logo }}" alt="{{ pokemon[0].PokemonTypes.TypeTwo.SpanishName }}">
+        <p>{{ pokemon[0].PokedexNumber }}</p>
+        <p>{{ pokemon[0].Name }}</p>
+        <p>{{ pokemon[0].Description }}</p>
+        <div>
+            <img src="{{ pokemon[0].PokemonTypes.TypeOne.Logo }}" alt="{{ pokemon[0].PokemonTypes.TypeOne.Name }}">
+            <img src="{{ pokemon[0].PokemonTypes.TypeTwo.Logo }}" alt="{{ pokemon[0].PokemonTypes.TypeTwo.Name }}">
+        </div>
+        <div *ngIf="pokemon[0].PokemonEvolution">
+            <img src="{{ pokemon[0].PokemonEvolution.Evolution.Image }}" alt="{{ pokemon[0].PokemonEvolution.Evolution.Name }}"> 
+            <p>{{ pokemon[0].PokemonEvolution.Evolution.Name }}</p>
+            <p>{{ pokemon[0].PokemonEvolution.Requeriment }}</p>
+        </div>
+        <div *ngIf="!pokemon[0].PokemonEvolution"><p>No tiene</p></div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="closeModal()">Close</button>
     </div>
-    <div *ngIf="pokemon[0].PokemonEvolution">
-        <img src="{{ pokemon[0].PokemonEvolution.Evolution.Image }}" alt="{{ pokemon[0].PokemonEvolution.Evolution.Name }}"> 
-        <p>{{ pokemon[0].PokemonEvolution.Evolution.Name }}</p>
-        <p>{{ pokemon[0].PokemonEvolution.Requeriment }}</p>
-    </div>
-    <div *ngIf="!pokemon[0].PokemonEvolution"><p>No tiene</p></div>
 </div>

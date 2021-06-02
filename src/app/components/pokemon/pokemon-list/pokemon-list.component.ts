@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PokemonService } from '../../../services/pokemon.service';
 import { Pokemon } from '../../../interfaces/pokemon.interface';
+import { PokemonDetailComponent } from './../pokemon-detail/pokemon-detail.component';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -11,9 +13,9 @@ export class PokemonListComponent implements OnInit {
   public listPokemon : Pokemon[] = [];
   pokemonLoaded : boolean;
   pokemonDetail : boolean;
-  pokemonId : string = '';
   
-  constructor(private _pokemonService : PokemonService) { 
+  constructor(private modalService: NgbModal,
+              private _pokemonService : PokemonService) { 
     this.pokemonLoaded = false;
     this.pokemonDetail = false;
   }
@@ -26,7 +28,7 @@ export class PokemonListComponent implements OnInit {
   }
 
   viewPokemonDetails(pokemonId : string) {
-    this.pokemonId = pokemonId;
-    this.pokemonDetail = !this.pokemonDetail;
+    const modalRef = this.modalService.open(PokemonDetailComponent, { size: 'xl' });
+    modalRef.componentInstance.pokemonID = pokemonId;
   }
 }

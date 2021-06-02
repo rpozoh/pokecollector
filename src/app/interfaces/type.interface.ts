@@ -1,5 +1,5 @@
 export interface Type {
-    EnglishName : string;
-    SpanishName : string;
+    id: string;
+    Name : string;
     Logo : string;
 }
