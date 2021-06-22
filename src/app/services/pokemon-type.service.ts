@@ -10,6 +10,6 @@ export class PokemonTypeService {
   constructor(private firestore : AngularFirestore) {}
 
 getPokemonTypes(pokemon : string) {
-    return this.firestore.collection<PokemonType>('Pokemon_Type', ref => ref.where("Pokemon", "==", pokemon));
+    return this.firestore.collection<PokemonType>('Pokemon_Type', ref => ref.where("Pokemon", "==", pokemon).orderBy('Order', 'asc'));
   }
 }

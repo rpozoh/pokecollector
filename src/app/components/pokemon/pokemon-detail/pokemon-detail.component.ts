@@ -16,8 +16,9 @@ export class PokemonDetailComponent implements OnInit {
 
   pokemon : Pokemon[] = [];
   pokemonLoaded : boolean;
-  typesLoaded : boolean;
+  typeLoaded : boolean;
   pokemonEvolutionLoaded : boolean;
+  pokemonEvolve : boolean;
 
   constructor(private _pokemonService : PokemonService,
               private _pokemonTypeService : PokemonTypeService,
@@ -25,8 +26,9 @@ export class PokemonDetailComponent implements OnInit {
               private _pokemonEvolutionService : PokemonEvolutionService,
               private activeModal: NgbActiveModal) {
                 this.pokemonLoaded = false;
-                this.typesLoaded = false;
+                this.typeLoaded = false;
                 this.pokemonEvolutionLoaded = false;
+                this.pokemonEvolve = true;
                }
 
   ngOnInit(): void {
@@ -41,29 +43,33 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   getPokemonTypes() {
+    const that = this;
     this._pokemonTypeService.getPokemonTypes(this.pokemonID).valueChanges().subscribe(getPokemonTypeData => {
-      this.pokemon[0].PokemonTypes = getPokemonTypeData[0];
-      this._typeService.getTypes(getPokemonTypeData[0].TypeOne.toString()).valueChanges().subscribe(getTypeOneData => {
-        this.pokemon[0].PokemonTypes.TypeOne = getTypeOneData!;
+      this.pokemon[0].PokemonTypes = getPokemonTypeData;
+      this.pokemon[0].PokemonTypes.forEach(function(value, key) {
+        that._typeService.getTypes(value.Type.toString()).get().subscribe(getTypeData => {
+          that.pokemon[0].PokemonTypes[key]!.Type = getTypeData.data()!;
+          that.typeLoaded = true;
+        })
       });
-      if(this.pokemon[0].PokemonTypes.TypeTwo) {
-        this._typeService.getTypes(getPokemonTypeData[0].TypeTwo.toString()).valueChanges().subscribe(getTypeTwoData => {
-          this.pokemon[0].PokemonTypes!.TypeTwo = getTypeTwoData!;
-        });
-      }
-      this.typesLoaded = true;
     });
   }
 
   getPokemonEvolution() {
+    const that = this;
     this._pokemonEvolutionService.getPokemonEvolution(this.pokemonID).valueChanges().subscribe(getPokemonEvolutionData => {
-      this.pokemon[0].PokemonEvolution = getPokemonEvolutionData[0];
-      if(this.pokemon[0].PokemonEvolution) {
-        this._pokemonService.getPokemonByID(this.pokemon[0].PokemonEvolution.Evolution.toString()).get().subscribe(getPokemonData => {
-          this.pokemon[0].PokemonEvolution!.Evolution = getPokemonData.data()!;
+      this.pokemon[0].PokemonEvolution = getPokemonEvolutionData;
+      if(this.pokemon[0].PokemonEvolution.length != 0)  {
+        this.pokemon[0].PokemonEvolution.forEach(function(value, key) {
+          that._pokemonService.getPokemonByID(value.Evolution.toString()).get().subscribe(getPokemonData => {
+            that.pokemon[0].PokemonEvolution[key]!.Evolution = getPokemonData.data()!;
+            that.pokemonEvolutionLoaded = true;
+          });
         });
+      } else {
+        that.pokemonEvolutionLoaded = true;
+        that.pokemonEvolve = false;
       }
-      this.pokemonEvolutionLoaded = true;
     });
   }
 

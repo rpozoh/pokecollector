@@ -34,4 +34,8 @@ export class RegionService {
         })));
         return this.region;
     }
+
+    getRegion(region : string) {
+        return this.firestore.collection<Region>('Region').doc(region);
+    }
 }

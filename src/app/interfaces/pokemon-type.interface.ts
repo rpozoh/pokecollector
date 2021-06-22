@@ -3,6 +3,6 @@ import { Type } from './type.interface';
 
 export interface PokemonType {
     Pokemon : Pokemon;
-    TypeOne : Type;
-    TypeTwo : Type;
+    Type : Type;
+    Order : number;
 }

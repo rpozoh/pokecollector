@@ -1,26 +1,39 @@
-<app-loading *ngIf="!pokemonLoaded || !typesLoaded || !pokemonEvolutionLoaded"></app-loading>
-<div class="modal-header" *ngIf="pokemonLoaded && typesLoaded && pokemonEvolutionLoaded">
+<app-loading *ngIf="!pokemonLoaded || !typeLoaded || !pokemonEvolutionLoaded"></app-loading>
+<div class="modal-header" *ngIf="pokemonLoaded && typeLoaded && pokemonEvolutionLoaded">
     <h4 class="modal-title">{{ pokemon[0].Name }}</h4>
     <button type="button" class="close" (click)="closeModal()" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<div class="modal-body">
+<div class="modal-body" *ngIf="pokemonLoaded && typeLoaded && pokemonEvolutionLoaded">
     <img src="{{ pokemon[0].Image }}" alt="{{ pokemon[0].Name }}"> 
-        <p>{{ pokemon[0].PokedexNumber }}</p>
-        <p>{{ pokemon[0].Name }}</p>
-        <p>{{ pokemon[0].Description }}</p>
-        <div>
-            <img src="{{ pokemon[0].PokemonTypes.TypeOne.Logo }}" alt="{{ pokemon[0].PokemonTypes.TypeOne.Name }}">
-            <img src="{{ pokemon[0].PokemonTypes.TypeTwo.Logo }}" alt="{{ pokemon[0].PokemonTypes.TypeTwo.Name }}">
-        </div>
-        <div *ngIf="pokemon[0].PokemonEvolution">
-            <img src="{{ pokemon[0].PokemonEvolution.Evolution.Image }}" alt="{{ pokemon[0].PokemonEvolution.Evolution.Name }}"> 
-            <p>{{ pokemon[0].PokemonEvolution.Evolution.Name }}</p>
-            <p>{{ pokemon[0].PokemonEvolution.Requeriment }}</p>
-        </div>
-        <div *ngIf="!pokemon[0].PokemonEvolution"><p>No tiene</p></div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-light" (click)="closeModal()">Close</button>
+    <p>N° Pokedex: {{ pokemon[0].PokedexNumber }}</p>
+    <p>Nombre: {{ pokemon[0].Name }}</p>
+    <p>Descripción: {{ pokemon[0].Description }}</p>
+    <div>
+        <p>Tipo:
+        <img *ngFor="let type of pokemon[0].PokemonTypes" src="{{ type.Type.Logo }}" alt="{{ type.Type.Name }}"></p>
     </div>
+    <p>Evolución: </p>
+    <div class="row row-cols-1 row-cols-md-2 g-2" *ngIf="pokemonEvolve">
+        <div class="col col-md-3 col-lg-3 my-3">
+            <img src="{{ pokemon[0].Image }}" alt="{{ pokemon[0].Name }}"> 
+        </div>
+        <div class="col col-md-9 col-lg-9 my-9">
+            <div class="row row-cols-1 row-cols-md-2 g-2" *ngFor=" let evolution of pokemon[0].PokemonEvolution">
+                <div class="col col-md-5 col-lg-5 my-1">
+                    <p>{{ evolution.Requeriment }}</p>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Flecha_tesela.svg/1200px-Flecha_tesela.svg.png" class="img-evoline">
+                </div>
+                <div class="col col-md-5 col-lg-5 my-1">
+                    <img src="{{ evolution.Evolution.Image }}" alt="{{ evolution.Evolution.Name }}"> 
+                    <p>{{ evolution.Evolution.Name }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!pokemonEvolve"><p>No tiene</p></div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="closeModal()">Close</button>
 </div>

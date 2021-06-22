@@ -3,10 +3,8 @@
 \*------------------------------*/
 %btn {
     display: inline-block;
-    color: $button-text-color;
-    background-color: $button-background-color;
     line-height: 2.5;
-    border-radius: $border-radius;
+    border: none;
     font-size: $button-font-size;
     &__icon {
         font-size: 0.6em;

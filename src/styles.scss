@@ -3,6 +3,7 @@
 @import "sass/libs/functions";
 @import "sass/libs/mixins";
 @import "sass/libs/animations";
+@import "~bootstrap/scss/bootstrap";
 
 // Base Elements
 @import "sass/base/buttons";
@@ -27,5 +28,6 @@
 
 // Last Import
 @import "sass/components/utilities";
+
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';

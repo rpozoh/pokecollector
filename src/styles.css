@@ -327,10 +327,8 @@
 \*------------------------------*/
 .btn-success, .btn--warning, .btn--error, .btn--info, .btn {
   display: inline-block;
-  color: #ffffff;
-  background-color: #FF0000;
   line-height: 2.5;
-  border-radius: 4px;
+  border: none;
   font-size: 14.4px;
 }
 .btn--info {
@@ -353,10 +351,14 @@
             $CONTAINERS
 \*------------------------------*/
 .div {
-  padding: 24px;
+  padding: 20px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.card {
+  width: 16rem;
 }
 
 /*------------------------------*\
@@ -409,6 +411,11 @@
 .img-cards {
   height: 80px;
   width: 80px;
+}
+
+.img-evoline {
+  height: 48px;
+  width: 48px;
 }
 
 /*------------------------------*\

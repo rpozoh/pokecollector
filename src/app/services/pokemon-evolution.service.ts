@@ -10,6 +10,6 @@ export class PokemonEvolutionService {
   constructor(private firestore : AngularFirestore) { }
 
   getPokemonEvolution(pokemon : string) {
-    return this.firestore.collection<PokemonEvolution>('Pokemon_Evolution', ref => ref.where("Pokemon", "==", pokemon));
+    return this.firestore.collection<PokemonEvolution>('Pokemon_Evolution', ref => ref.where("Pokemon", "==", pokemon).orderBy('Order', 'asc'));
   }
 }

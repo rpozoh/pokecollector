@@ -1,17 +1,14 @@
-<app-loading *ngIf="!pokemonLoaded"></app-loading>
-<div class="row row-cols-1 row-cols-md-4 g-4" *ngIf="pokemonLoaded">
+<app-loading *ngIf="!pokemonLoaded || !pokemonRegionLoaded"></app-loading>
+<div class="row row-cols-4 row-cols-md-4 g-4" *ngIf="pokemonLoaded && pokemonRegionLoaded">
   <div class="col col-md-3 col-lg-3 my-3" *ngFor="let pokemon of listPokemon">
-    <div class="card div">
-      <img src="{{ pokemon.Image }}" class="card-img-top img-cards" alt="{{ pokemon.Name }}">
-      <div class="card-body">
-        <h5 class="card-title">{{ pokemon.Name }}</h5>
-        <p class="card-text">N° Pokedex: {{ pokemon.PokedexNumber }}</p>
-        <div class="text-center">
-          <button type="button" class="btn" (click)="viewPokemonDetails(pokemon.id)">
-            Ver más
-          </button>
+    <button type="button" class="btn" (click)="viewPokemonDetails(pokemon.id)">
+      <div class="card div">
+          <img src="{{ pokemon.Image }}" class="card-img-top img-cards" alt="{{ pokemon.Name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ pokemon.Name }}</h5>
+            <p class="card-text">Región: {{ pokemon.PokemonRegion.Region.Name }}</p>
+          </div>
         </div>
-      </div>
+      </button>
     </div>
-  </div>
 </div>

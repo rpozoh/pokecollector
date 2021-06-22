@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 // Rutas
-import { APP_ROUTES } from './app.routes';
+import { AppRoutingModule } from './app-routing.module';
 
 // Componentes
 import { AppComponent } from './app.component';
@@ -37,7 +37,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot( APP_ROUTES,{ useHash : true } ),
+    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase, 'angular-fs'),
     NgbModule,
   ],
